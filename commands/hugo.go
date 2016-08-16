@@ -53,6 +53,14 @@ import (
 // provide a cleaner external API, but until then, this is it.
 var Hugo *hugolib.HugoSites
 
+// Reset resets Hugo ready for a new full build. This is mainly only useful
+// for benchmark testing etc. via the CLI commands.
+func Reset() error {
+	Hugo = nil
+	viper.Reset()
+	return nil
+}
+
 // userError is an error used to signal different error situations in command handling.
 type commandError struct {
 	s         string
